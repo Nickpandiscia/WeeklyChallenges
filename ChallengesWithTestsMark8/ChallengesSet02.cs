@@ -30,18 +30,24 @@ namespace ChallengesWithTestsMark8
 
         public double SumOfMinAndMax(IEnumerable<double> numbers)
         {
+            double minNumber = 0;
+            double maxNumber = 0;
             if(numbers == null)
             {
                 return 0;
             }
-            if(numbers.Count() == 0)
+            foreach(var number in numbers)
             {
-                return 0;
+                if(number < minNumber)
+                {
+                    minNumber = number;
+                }
+                if(number > maxNumber)
+                {
+                    maxNumber = number;
+                }
             }
-            numbers = numbers.ToList();
-            var min = numbers.Min();
-            var max = numbers.Max();
-            return min + max;
+            return minNumber + maxNumber;
         }
 
         public int GetLengthOfShortestString(string str1, string str2)
@@ -52,15 +58,13 @@ namespace ChallengesWithTestsMark8
         public int Sum(int[] numbers)
         {
             
-            int sum = 0;
+            
             if(numbers != null)
             {
-                foreach (var number in numbers)
-                {
-                    sum += number;
-                }
+                var numberList = numbers.ToList();
+                return numberList.Sum();
             }            
-            return sum;
+            return 0;
             
         }
 
